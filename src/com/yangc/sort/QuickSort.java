@@ -1,9 +1,5 @@
 package com.yangc.sort;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class QuickSort {
     public static void main(String[] args) {
         int[] arr = { 3, 38, 6, 97, 23, 22, 76, 1, 88, 8, 2, 0, -1, 22 };
