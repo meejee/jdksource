@@ -23,6 +23,18 @@ public class AppMain {
 
     public static void main(String[] args) throws IOException {
         User user = AppMain.getUser();
+
+//        String s = new String("18888") + new String("1");
+//        s.intern();
+//        String s2 = "188881";
+//        System.out.println(s == s2);
+
+        String s = new StringBuilder("18888").append("1").toString();
+        s.intern();
+        String s2 = "188881";
+        System.out.println(s == s2);
+
+
         System.out.println(user.toString());
         // 普通内部类不能这样使用 需要在InnerTest中使用
         // InnerTest.Inner inner = new InnerTest.Inner();
@@ -45,9 +57,7 @@ public class AppMain {
     try
     {
         System.out.println(br.readLine());
-    } catch(
-    IOException e)
-
+    } catch(IOException e)
     {
         e.printStackTrace();
     }
