@@ -2,8 +2,9 @@ package com.yangc.thread;
 
 import java.util.concurrent.*;
 // Semaphore的作用：限制线程并发的数量
-public class SemphoreTest2 {
+public class SemaphoreTest2 {
     public static void main(String[] args) {
+        // 主机如果是4核8线程 返回8
         int NUMBER_OF_CORES=Runtime.getRuntime().availableProcessors();
         System.out.println("NUMBER_OF_CORES:" + NUMBER_OF_CORES);
         // 一个线程 SynchronousQueue 如果任务提交过去 线程没空处理 线程池会拒绝处理 产生异常
@@ -31,7 +32,7 @@ public class SemphoreTest2 {
                     "进入，当前已有" + (3-semaphore.availablePermits()) + "个并发");
 
                     try {
-                        TimeUnit.MILLISECONDS.sleep(200);
+                        TimeUnit.MILLISECONDS.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -39,12 +40,13 @@ public class SemphoreTest2 {
                     semaphore.release();
                     // 下面代码有时候执行不准确，因为其没有和semaphore.release()合成原子单元
                     System.out.println("线程" + Thread.currentThread().getName() +
-                    "已离开，当前已有" + (3-semaphore.availablePermits()) + "个并发");
+                    "已离开，当前还有" + (3-semaphore.availablePermits()) + "个并发");
                 }
             };
 
             executor.execute(runnable);
         }
         executor.shutdown();
+        System.out.println("end...............");
     }
 }

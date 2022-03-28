@@ -2,13 +2,14 @@ package com.yangc.thread;
 
 import java.util.concurrent.Semaphore;
 
-public class SemphoreTest {
-    public static Semaphore sem1;
-    public static Semaphore sem2;
-    public static Semaphore sem3;
-    public static Semaphore sem4;
+public class SemaphoreTest {
+    private static Semaphore sem1;
+    private static Semaphore sem2;
+    private static Semaphore sem3;
+    private static Semaphore sem4;
 
     static class FirstThread extends Thread {
+        @Override
         public void run() {
             try {
                 while (true) {
@@ -23,6 +24,7 @@ public class SemphoreTest {
     }
 
     static class SecondThread extends Thread {
+        @Override
         public void run() {
             try {
                 while (true) {
@@ -37,6 +39,7 @@ public class SemphoreTest {
     }
 
     static class ThirdThread extends Thread {
+        @Override
         public void run() {
             try {
                 while (true) {
@@ -51,6 +54,7 @@ public class SemphoreTest {
     }
 
     static class ForthThread extends Thread {
+        @Override
         public void run() {
             try {
                 while (true) {

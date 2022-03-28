@@ -14,18 +14,15 @@ public class Interrupt {
 
     public static void main(String[] args) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("isInterrupted before while:" + Thread.currentThread().isInterrupted());
-                // 当前线程没有被中断 则循环执行
-                while (!Thread.interrupted()) {
-                    System.out.println("isInterrupted in while:" + Thread.currentThread().isInterrupted());
-                    System.out.println(Thread.currentThread().getName() + ":线程没有被中断");
-                }
-                // 退出循环 线程被中断了  interrupted()会将中断状态重置
-                System.out.println("isInterrupted after while:" + Thread.currentThread().isInterrupted());
+        Thread thread = new Thread(() -> {
+            System.out.println("isInterrupted before while:" + Thread.currentThread().isInterrupted());
+            // 当前线程没有被中断 则循环执行
+            while (!Thread.interrupted()) {
+                System.out.println("isInterrupted in while:" + Thread.currentThread().isInterrupted());
+                System.out.println(Thread.currentThread().getName() + ":线程没有被中断");
             }
+            // 退出循环 线程被中断了  interrupted()会将中断状态重置
+            System.out.println("isInterrupted after while:" + Thread.currentThread().isInterrupted());
         });
 
         thread.start();
